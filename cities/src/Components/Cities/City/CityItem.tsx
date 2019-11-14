@@ -1,10 +1,20 @@
 import React from 'react'
 import './CityItem.scss'
-const CityItem = () => {
+
+
+interface Props {
+    id:String,
+    name:String,
+    chinesename:String
+}
+
+
+const CityItem = (props:Props) => {
     return(
-        <h2>
-            Item
-        </h2>
+        <div>
+            <p>{props.name}</p>
+            <p>{props.chinesename}</p>
+        </div>
     )
 }
 
