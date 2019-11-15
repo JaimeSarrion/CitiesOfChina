@@ -9,11 +9,12 @@ interface Props {
 }
 
 
-const CityItem = (props:Props) => {
+const CityItem:React.FC<Props> = ({id,name,chinesename}) => {
+    console.log(chinesename)
     return(
-        <div>
-            <p>{props.name}</p>
-            <p>{props.chinesename}</p>
+        <div className="Container">
+            <p>{name}</p>
+            <p>{chinesename}</p>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PanelList from '../Panels/PanelList/PanelList'
 import PanelSelected from '../Panels/PanelSelected/PanelSelected'
-
+import './Layout.scss'
 /* VARIABLES */
 
 //The json required for the Evaluation
@@ -11,7 +11,7 @@ const Layout = () => {
     /* Aqui voy a tener que ponerle estado, para pasarle las seleccionadas a PanelSelected */
     return (
         <div>
-            <h6>Cities of china</h6>
+            <p id= "title">Cities of China</p>
             <PanelList cities = {list.cities}></PanelList>
             <PanelSelected></PanelSelected>
         </div>
