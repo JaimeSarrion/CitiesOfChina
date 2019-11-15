@@ -4,16 +4,14 @@ import CitiesList from '../../Cities/CitiesList'
 import { MdSearch } from 'react-icons/md'
 
 interface Props {
-    cities: Array<{ id: String, name: String, chinesename: String }>;
+    cities: Array<{ id: String, name: String, chineseName: String }>;
 }
 
-const PanelList = (props: Props) => {
+const PanelList:React.FC<Props> = ({cities}) => {
     let inputState = useState({
         search: ''
     })
-
-
-
+    
     return (
         <div className="Container">
             <div className="SearchBar">
@@ -23,12 +21,12 @@ const PanelList = (props: Props) => {
             </div>
             <div id="TotalItems">
                 <label className="control control-checkbox">
-                    {props.cities.length} items
+                    {cities.length} items
                     <input type="checkbox" />
                     <div className="control_indicator"></div>
                 </label>
             </div>
-            <CitiesList cities={props.cities} search={inputState[0].search}></CitiesList>
+            <CitiesList cities={cities} search={inputState[0].search}></CitiesList>
         </div>
     )
 }

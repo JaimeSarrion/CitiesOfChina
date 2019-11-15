@@ -1,7 +1,71 @@
-.Container{
+.Item{
     width: 100%;
     &:hover {
         cursor: pointer;
-        //background-color: #bbb;
+        background-color: #eee;
+    }
+    .Imagen{
+        width: 20%;
+    }
+    .control {
+        font-family: arial;
+        display: block;
+        position: relative;
+        padding-left: 29px;
+        margin-bottom: 5px;
+        padding-top: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        display: inline-flex;
+        input{
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            &:checked ~ .control_indicator {
+                background: #2aa1c0;
+            }
+            &:disabled ~ .control_indicator {
+                background: #e6e6e6;
+                opacity: 0.6;
+                pointer-events: none;
+            }
+        }
+        p{
+            margin: 5px;
+        }
+
+    }
+    .control_indicator {
+        position: absolute;
+        top: 20px;
+        left: 5px;
+        height: 15px;
+        width: 15px;
+        background: #fffdfd;
+        border: 2px solid black;
+        border-radius: 3px;
+    }
+
+    .control_indicator:after {
+        box-sizing: unset;
+        content: '';
+        position: absolute;
+        display: none;
+    }
+    .control input:checked ~ .control_indicator:after {
+        display: block;
+    }
+    .control-checkbox .control_indicator:after {
+        left: 5.1px;
+        top: 2px;
+        width: 3px;
+        height: 8px;
+        border: solid #ffffff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    .control-checkbox input:disabled ~ .control_indicator:after {
+        border-color: #7b7b7b;
     }
 }
+
