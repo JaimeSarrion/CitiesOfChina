@@ -8,13 +8,22 @@ import './Layout.scss'
 const list = require('../../assets/data/cities-of-china.json')
 
 const Layout:React.FC = () => {
-    useState({
+    const inputState = useState({
         selectAll: false,
-        citiesSelected: Array
+        citiesSelected: new Array
     })
-    /* Aqui voy a tener que ponerle estado, para pasarle las seleccionadas a PanelSelected */
-    const onSelectAll = ()=>{
-        
+
+    const onSelectAll = (check:boolean)=>{
+        if (check) {//All the cities are selected
+            console.log(check)
+            inputState[1]({citiesSelected: list.cities, selectAll: true});
+        }else{
+            inputState[1]({citiesSelected: [], selectAll: false});
+        }
+    }
+
+    const onClickClear= () =>{
+        inputState[1]({citiesSelected: [], selectAll: false});
     }
 
 
@@ -22,8 +31,14 @@ const Layout:React.FC = () => {
         <div>
             <p id="title">Cities of China</p>
             <div className="Panels">
-                <PanelList cities={list.cities}></PanelList>
-                <PanelSelected cities={list.cities}></PanelSelected>
+                <PanelList 
+                    cities={list.cities} 
+                    onSelectAll={onSelectAll}
+                />
+                <PanelSelected 
+                    cities={inputState[0].citiesSelected}
+                    onClear={onClickClear}
+                />
             </div>
         </div>
     )

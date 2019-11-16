@@ -4,17 +4,16 @@ import CitiesList from '../../Cities/CitiesList'
 import { MdSearch } from 'react-icons/md'
 
 interface Props {
-    cities: Array<{ id: String, name: String, chineseName: String }>;
+    cities: Array<{ id: String, name: String, chineseName: String }>
+    onSelectAll(check:boolean):any
 }
 
-const PanelList:React.FC<Props> = ({cities}) => {
+const PanelList:React.FC<Props> = ({cities,onSelectAll}) => {
     let inputState = useState({
         search: ''
     })
     const checkedHandler = (event:any)=>{
-        if(event.target.checked){//Check all the cities
-            
-        }
+        onSelectAll(event.target.checked)
     }
 
 

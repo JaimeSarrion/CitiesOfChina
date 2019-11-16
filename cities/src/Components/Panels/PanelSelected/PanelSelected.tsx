@@ -3,17 +3,18 @@ import './PanelSelected.scss'
 
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>;
+    onClear():any
 }
 
 
-const PanelSelected:React.FC<Props> = ({cities}) => {
+const PanelSelected:React.FC<Props> = ({cities, onClear}) => {
 
     console.log(cities[0])
     return(
         <div className="ContainerSelected">
             <div className = "Header">
                 <p>2 items</p>
-                <button>CLEAR</button>
+                <button onClick={onClear}>CLEAR</button>
             </div>
             <div>
                 <p>Listado de elementos</p>
