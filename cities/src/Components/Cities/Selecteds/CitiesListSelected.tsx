@@ -1,34 +1,28 @@
 import React from 'react'
-import CitiesItemSelected from './CityItemSelected/CityItemSelected'
+import CityItemSelected from './CityItemSelected/CityItemSelected'
 
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>
+    deleteItemHandler(id:String):any
 }
 
-const CitiesListSelected:React.FC<Props> =()=>{
+const CitiesListSelected: React.FC<Props> = ({ cities, deleteItemHandler }) => {
 
-    return(
-        <div  className="Scroller">
-            <CitiesItemSelected
-                name="Paco"
-                chinesename="Calatraba"
-                id="Calatraba"
+    var list = cities.map((item) => {
+        return (
+            <CityItemSelected
+                key={item.id.toString()} 
+                id={item.id} 
+                name={item.name} 
+                chinesename={item.chineseName}
+                deleteItemHandler={(id)=>{deleteItemHandler(id)}}
             />
-            <CitiesItemSelected
-                name="Paco"
-                chinesename="Calatraba"
-                id="Calatraba"
-            />
-            <CitiesItemSelected
-                name="Paco"
-                chinesename="Calatraba"
-                id="Calatraba"
-            />
-            <CitiesItemSelected
-                name="Paco"
-                chinesename="Calatraba"
-                id="Calatraba"
-            />
+        )
+    })
+
+    return (
+        <div className="Scroller">
+            {list}
         </div>
     )
 

@@ -5,14 +5,16 @@ import { MdSearch } from 'react-icons/md'
 
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>
-    onSelectAll(check:boolean):any
+    onSelectAll(check: boolean): any,
+    onSelectItem(value: { id: String, name: String, chineseName: String }): any
+    deleteItemHandler(id:String):any
 }
 
-const PanelList:React.FC<Props> = ({cities,onSelectAll}) => {
+const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteItemHandler }) => {
     let inputState = useState({
         search: ''
     })
-    const checkedHandler = (event:any)=>{
+    const checkedHandler = (event: any) => {
         onSelectAll(event.target.checked)
     }
 
@@ -27,11 +29,16 @@ const PanelList:React.FC<Props> = ({cities,onSelectAll}) => {
             <div id="TotalItems">
                 <label className="control control-checkbox">
                     {cities.length} items
-                    <input type="checkbox" onChange={checkedHandler}/>
+                    <input type="checkbox" onChange={checkedHandler} />
                     <div className="control_indicator"></div>
                 </label>
             </div>
-            <CitiesList cities={cities} search={inputState[0].search}></CitiesList>
+            <CitiesList
+                cities={cities}
+                search={inputState[0].search}
+                onSelectItem = {onSelectItem}
+                deleteItemHandler={deleteItemHandler}
+            />
         </div>
     )
 }

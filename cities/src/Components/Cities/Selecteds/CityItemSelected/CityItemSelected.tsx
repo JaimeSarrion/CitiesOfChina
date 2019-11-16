@@ -5,21 +5,29 @@ interface Props {
     id: String,
     name: String,
     chinesename: String
+    deleteItemHandler(id:String):any
 }
 
-const CitiesItemSelected: React.FC<Props> = ({ id, name, chinesename }) => {
+const CityItemSelected: React.FC<Props> = ({ id, name, chinesename, deleteItemHandler }) => {
+
+    const clickHandler:any = ()=>{
+        deleteItemHandler(id)
+    }
+
     return (
         <div className="Item">
-            <label className="control">
+            <div className="control">
                 <img alt="CityIcon" className="Imagen" src={imagen} />
                 <div>
                     <p>{name}</p>
                     <p>{chinesename}</p>
-                    <button id="DropButton">X</button>
                 </div>
-            </label>
+                <button onClick={()=>{clickHandler()}} id="DropButton">X</button>
+
+            </div>
+
         </div>
     )
 }
 
-export default CitiesItemSelected
+export default CityItemSelected

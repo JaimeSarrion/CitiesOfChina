@@ -4,9 +4,21 @@ import imagen from '../../../assets/images/China.jpg'
 interface Props {
     id: String,
     name: String,
-    chinesename: String
+    chineseName: String
+    onSelectItem(value: { id: String, name: String, chineseName: String }): any
+    deleteItemHandler(id:String):any
 }
-const CityItem: React.FC<Props> = ({name, chinesename }) => {
+const CityItem: React.FC<Props> = ({id, name, chineseName, onSelectItem, deleteItemHandler}) => {
+
+    const selectedItemHandler = (event:any) =>{
+        //item selected
+        if (event.target.checked) {
+            onSelectItem({ id, name, chineseName})
+        }else{
+            deleteItemHandler(id)
+        }
+        
+    }
 
     return (
         <div className="Item">
@@ -14,9 +26,9 @@ const CityItem: React.FC<Props> = ({name, chinesename }) => {
                 <img alt="CityIcon" className="Imagen" src={imagen} />
                 <div>
                     <p>{name}</p>
-                    <p>{chinesename}</p>    
+                    <p>{chineseName}</p>    
                 </div>
-                <input type="checkbox" />
+                <input onChange={selectedItemHandler} type="checkbox" />
                 <div className="control_indicator"></div>
             </label>
         </div>

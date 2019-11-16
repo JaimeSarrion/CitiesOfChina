@@ -9,7 +9,6 @@
     }
     .control {
         font-family: arial;
-        display: block;
         position: relative;
         padding-left: 29px;
         margin-bottom: 5px;
@@ -41,7 +40,7 @@
         left: 5px;
         height: 15px;
         width: 15px;
-        background: #fffdfd;
+        background: transparent;
         border: 2px solid black;
         border-radius: 3px;
     }

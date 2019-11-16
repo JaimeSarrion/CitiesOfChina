@@ -5,12 +5,12 @@ import CitiesListSelected from '../../Cities/Selecteds/CitiesListSelected'
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>;
     onClear():any
+    deleteItemHandler(id:String):any
 }
 
 
-const PanelSelected:React.FC<Props> = ({cities, onClear}) => {
+const PanelSelected:React.FC<Props> = ({cities, onClear, deleteItemHandler}) => {
 
-    console.log(cities[0])
     return(
         <div className="ContainerSelected">
             <div className = "Header">
@@ -18,7 +18,7 @@ const PanelSelected:React.FC<Props> = ({cities, onClear}) => {
                 <button onClick={onClear}>CLEAR</button>
             </div>
             <div>
-                <CitiesListSelected cities={cities}/>
+                <CitiesListSelected cities={cities} deleteItemHandler={deleteItemHandler}/>
             </div>
         </div>
 
