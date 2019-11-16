@@ -1,5 +1,6 @@
 import React from 'react'
 import './PanelSelected.scss'
+import CitiesListSelected from '../../Cities/Selecteds/CitiesListSelected'
 
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>;
@@ -17,7 +18,7 @@ const PanelSelected:React.FC<Props> = ({cities, onClear}) => {
                 <button onClick={onClear}>CLEAR</button>
             </div>
             <div>
-                <p>Listado de elementos</p>
+                <CitiesListSelected cities={cities}/>
             </div>
         </div>
 
