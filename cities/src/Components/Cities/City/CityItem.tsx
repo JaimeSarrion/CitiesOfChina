@@ -6,9 +6,7 @@ interface Props {
     name: String,
     chinesename: String
 }
-
-
-const CityItem: React.FC<Props> = ({ id, name, chinesename }) => {
+const CityItem: React.FC<Props> = ({name, chinesename }) => {
 
     return (
         <div className="Item">

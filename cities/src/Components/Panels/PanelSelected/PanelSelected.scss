@@ -1,4 +1,26 @@
-.Container {
-    width: 50%;
-    display: inline-block;
+.ContainerSelected {
+    display: block;
+    .Header{
+        border:1px solid #eee;
+        width: 100%;
+        padding: 5px 5px;
+        button{
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            color: #51A3C8;
+            background-color: white;
+            font-weight: bold;
+            float: right;
+            &:focus{
+                outline: none;
+            }
+        }
+        p{
+            color: #555;
+            display: inline;
+        }
+    }
 }
+

@@ -11,7 +11,13 @@ const PanelList:React.FC<Props> = ({cities}) => {
     let inputState = useState({
         search: ''
     })
-    
+    const checkedHandler = (event:any)=>{
+        if(event.target.checked){//Check all the cities
+            
+        }
+    }
+
+
     return (
         <div className="Container">
             <div className="SearchBar">
@@ -22,7 +28,7 @@ const PanelList:React.FC<Props> = ({cities}) => {
             <div id="TotalItems">
                 <label className="control control-checkbox">
                     {cities.length} items
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={checkedHandler}/>
                     <div className="control_indicator"></div>
                 </label>
             </div>
