@@ -10,6 +10,7 @@ interface Props {
 
 const CityItemSelected: React.FC<Props> = ({ id, name, chinesename, deleteItemHandler }) => {
 
+    //Handler for the click on the X button
     const clickHandler:any = ()=>{
         deleteItemHandler(id)
     }

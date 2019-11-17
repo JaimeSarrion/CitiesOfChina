@@ -7,8 +7,8 @@ interface Props {
     deleteItemHandler(id:String):any
 }
 
+//This component is responsible for creating the list of items
 const CitiesListSelected: React.FC<Props> = ({ cities, deleteItemHandler }) => {
-
     var list = cities.map((item) => {
         return (
             <CityItemSelected

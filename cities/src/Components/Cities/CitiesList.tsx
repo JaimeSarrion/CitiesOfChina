@@ -14,7 +14,7 @@ interface Props {
     onSelectItem(value: { id: String, name: String, chineseName: String }): any
     deleteItemHandler(id: String): any
 }
-
+//This component is the left panel, where all the cities are allowed
 const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemHandler }) => {
 /*     const [iterator, setIterator] = useState(19)
     const [hashMore, setHashMore] = useState(true)

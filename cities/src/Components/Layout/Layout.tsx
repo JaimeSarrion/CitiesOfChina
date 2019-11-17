@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import PanelList from '../Panels/PanelList/PanelList'
 import PanelSelected from '../Panels/PanelSelected/PanelSelected'
 import './Layout.scss'
-/* VARIABLES */
 
-//The json required for the Evaluation
+//The .json required for the Evaluation
 const list = require('../../assets/data/cities-of-china.json')
-
 
 const Layout: React.FC = () => {
     const inputState = useState({
@@ -15,6 +13,7 @@ const Layout: React.FC = () => {
         citiesSelected: new Array<{ id: String, name: String, chineseName: String }>()
     })
 
+    //Logic for the 'general' checkbox
     const onSelectAll = (check: boolean) => {
         if (check) {//All the cities are selected
             if (inputState[0].search==='') {//Without filter
@@ -82,6 +81,7 @@ const Layout: React.FC = () => {
             })
         }
     }
+    //Handler for add an item to the 'selected' array of items
     const selectItemHandler = (item:{ id: String, name: String, chineseName: String }) =>{
         //When the checkbox of 'all selection' is unchecked
         if (!inputState[0].selectAll) {
@@ -95,6 +95,7 @@ const Layout: React.FC = () => {
             })
         }
     }
+    //Update the search property
     const searchHandler = (value:String)=>{
         inputState[1](
             (prevState):any=>{

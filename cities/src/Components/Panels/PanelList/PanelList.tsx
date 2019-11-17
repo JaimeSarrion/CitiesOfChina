@@ -16,10 +16,11 @@ const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteIt
         search: ''
     })
     
+    //Handler for the general checkbox
     const checkedHandler = (event: any) => {
         onSelectAll(event.target.checked)
     }
-
+    //Handler for the search input
     const onTypeHandler=(event:any)=>{
         inputState[1]({ search: event.target.value })
         onSearch( event.target.value)
