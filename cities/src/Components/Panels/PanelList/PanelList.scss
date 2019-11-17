@@ -3,7 +3,7 @@
     #TotalItems{
         border: 1px solid #eee;
         width: 100%;
-        padding: 5px 5px;
+        padding: 5px 0px;
         position: relative;
         /* Beginning Checkbox */
         .control {
@@ -65,13 +65,14 @@
     }
 }
 .SearchBar{
+    text-align: center;
     width: 100%;
     margin: 0px;
-    padding: 5px 5px;
+    padding: 5px 0px;
     border: 1px solid #eee;
     position: relative;
     #InputSearch{
-        width: 100%;
+        width: 95%;
         border: none;
         text-indent: 30px;
         border-bottom: 1.5px solid #ccc;

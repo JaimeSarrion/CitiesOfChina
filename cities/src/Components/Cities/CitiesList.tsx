@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CityItem from './City/CityItem'
 import './CitiesList.scss'
-import InfiniteScroll from 'react-infinite-scroller'
+/* import InfiniteScroll from 'react-infinite-scroller' */
+
+/*
+    NOTE: The code commmented is for the infinite scroller, only we have to comment the {list} and we have the infinite scroll
+    I have commented the code, because when the Infinite scroll is on, the browser does not work properly.
+*/ 
 
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>,
@@ -11,7 +16,7 @@ interface Props {
 }
 
 const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemHandler }) => {
-    const [iterator, setIterator] = useState(19)
+/*     const [iterator, setIterator] = useState(19)
     const [hashMore, setHashMore] = useState(true)
     const [items, setItems] = useState(cities.slice(0, iterator).map((item) => {
         return (
@@ -24,9 +29,7 @@ const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemH
                 deleteItemHandler={deleteItemHandler}
             />
         )
-    })
-
-    )
+    })) */
 
     var list = cities.map((item) => {
         if (search === '') {
@@ -58,7 +61,7 @@ const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemH
         }
 
     })
-    const loadFunc = () => {
+/*     const loadFunc = () => {
         if (hashMore) {
             if (iterator + 20 < cities.length - 1) {
                 setItems(prevState => {
@@ -76,9 +79,9 @@ const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemH
                     }))
                 })
                 setIterator(iterator + 20)
-                console.log(iterator);
+
             } else {
-                console.log(cities.slice(iterator, cities.length));
+
 
                 setItems(prevState => {
                     return prevState.concat(cities.slice(iterator, cities.length - 1).map((item) => {
@@ -97,16 +100,15 @@ const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemH
 
                 setIterator(cities.length - 1)
                 setHashMore(false)
-                console.log(items)
             }
         }
 
 
 
-    }
+    } */
     return (
         <div className="Scroller">
-            <InfiniteScroll
+{/*             <InfiniteScroll
                 pageStart={0}
                 loadMore={loadFunc}
                 hasMore={hashMore}
@@ -114,7 +116,9 @@ const CitiesList: React.FC<Props> = ({ cities, search, onSelectItem, deleteItemH
                 useWindow={false}
             >
                 {items}
-            </InfiniteScroll>
+            </InfiniteScroll> */}
+
+            {list}
         </div>
 
     )

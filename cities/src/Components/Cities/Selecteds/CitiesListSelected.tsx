@@ -1,5 +1,6 @@
 import React from 'react'
 import CityItemSelected from './CityItemSelected/CityItemSelected'
+import './CitiesListSelected.scss'
 
 interface Props {
     cities: Array<{ id: String, name: String, chineseName: String }>
@@ -21,7 +22,7 @@ const CitiesListSelected: React.FC<Props> = ({ cities, deleteItemHandler }) => {
     })
 
     return (
-        <div className="Scroller">
+        <div id="Panel">
             {list}
         </div>
     )

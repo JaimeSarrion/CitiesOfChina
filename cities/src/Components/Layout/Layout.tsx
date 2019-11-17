@@ -11,28 +11,56 @@ const list = require('../../assets/data/cities-of-china.json')
 const Layout: React.FC = () => {
     const inputState = useState({
         selectAll: false,
+        search:'',
         citiesSelected: new Array<{ id: String, name: String, chineseName: String }>()
     })
 
     const onSelectAll = (check: boolean) => {
         if (check) {//All the cities are selected
-            inputState[1](():any=>{ 
-                const selected = list.cities.slice()
-                return(
-                    {
-                        citiesSelected: selected,
-                        selectAll: true 
+            if (inputState[0].search==='') {//Without filter
+                inputState[1]((prevState):any=>{ 
+                    const selected = list.cities.slice()
+                    return(
+                        {
+                            citiesSelected: selected,
+                            selectAll: true,
+                            search: prevState.search
+                        }
+                    ) 
+                });
+            }else{//Having a filter
+                var selected: any[]= []
+                list.cities.map((item: any)=>{
+                    if (item.name.includes(inputState[0].search)) {
+                        selected.push(item)
                     }
-                ) 
-            });
+                })
+                inputState[1]((prevState):any=>{ 
+                    return(
+                        {
+                            citiesSelected: selected,
+                            selectAll: true,
+                            search: prevState.search
+                        }
+                    ) 
+                });
+            }
+
         } else {
-            inputState[1]({ citiesSelected: [], selectAll: false });
+            inputState[1]((prevState):any=>{ return {citiesSelected: [], selectAll: false, search: prevState.search} });
         }
     }
 
     //Logic for delete each item when 'CLEAR' buttton is clicked
     const onClickClear = () => {
-        inputState[1]({ citiesSelected: [], selectAll: false });
+        inputState[1]((prevState):any=>{ 
+            return {
+                citiesSelected: [], 
+                selectAll: false,
+                search: prevState.search
+            }
+
+        });
     }
 
     //Logic for delete an item when the 'X' is clicked
@@ -67,6 +95,17 @@ const Layout: React.FC = () => {
             })
         }
     }
+    const searchHandler = (value:String)=>{
+        inputState[1](
+            (prevState):any=>{
+                return {
+                    selectAll: prevState.selectAll,
+                    search: value,
+                    citiesSelected: prevState.citiesSelected
+                }
+            }
+        )
+    }
 
     return (
         <div>
@@ -77,6 +116,7 @@ const Layout: React.FC = () => {
                     onSelectAll={onSelectAll}
                     onSelectItem={selectItemHandler}
                     deleteItemHandler={deleteItemHandler}
+                    onSearch={searchHandler}
                 />
                 <PanelSelected
                     cities={inputState[0].citiesSelected}

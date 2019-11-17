@@ -8,9 +8,10 @@ interface Props {
     onSelectAll(check: boolean): any,
     onSelectItem(value: { id: String, name: String, chineseName: String }): any
     deleteItemHandler(id:String):any
+    onSearch(value:String):any
 }
 
-const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteItemHandler }) => {
+const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteItemHandler,onSearch}) => {
     let inputState = useState({
         search: ''
     })
@@ -19,12 +20,16 @@ const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteIt
         onSelectAll(event.target.checked)
     }
 
+    const onTypeHandler=(event:any)=>{
+        inputState[1]({ search: event.target.value })
+        onSearch( event.target.value)
+    }
 
     return (
         <div className="Container">
             <div className="SearchBar">
                 <span id="IconSearch"><MdSearch size={20} color="darkgray" /></span>
-                <input id="InputSearch" value={inputState[0].search} type="text" onChange={event => inputState[1]({ search: event.target.value })} placeholder="Search by name">
+                <input id="InputSearch" value={inputState[0].search} type="text" onChange={onTypeHandler} placeholder="Search by name">
                 </input>
             </div>
             <div id="TotalItems">
