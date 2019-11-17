@@ -10,11 +10,10 @@ interface Props {
 
 
 const PanelSelected:React.FC<Props> = ({cities, onClear, deleteItemHandler}) => {
-
     return(
         <div className="ContainerSelected">
             <div className = "Header">
-                <p>2 items</p>
+                <p>{cities.length} items</p>
                 <button onClick={onClear}>CLEAR</button>
             </div>
             <div>

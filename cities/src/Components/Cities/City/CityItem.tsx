@@ -10,14 +10,13 @@ interface Props {
 }
 const CityItem: React.FC<Props> = ({id, name, chineseName, onSelectItem, deleteItemHandler}) => {
 
+    //Handler for the selection or deselection of an element
     const selectedItemHandler = (event:any) =>{
-        //item selected
         if (event.target.checked) {
             onSelectItem({ id, name, chineseName})
         }else{
             deleteItemHandler(id)
         }
-        
     }
 
     return (

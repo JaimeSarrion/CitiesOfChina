@@ -14,6 +14,7 @@ const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteIt
     let inputState = useState({
         search: ''
     })
+    
     const checkedHandler = (event: any) => {
         onSelectAll(event.target.checked)
     }
@@ -23,7 +24,7 @@ const PanelList: React.FC<Props> = ({ cities, onSelectAll,onSelectItem, deleteIt
         <div className="Container">
             <div className="SearchBar">
                 <span id="IconSearch"><MdSearch size={20} color="darkgray" /></span>
-                <input id="InputSearch" type="text" onChange={event => inputState[1]({ search: event.target.value })} placeholder="Search by name">
+                <input id="InputSearch" value={inputState[0].search} type="text" onChange={event => inputState[1]({ search: event.target.value })} placeholder="Search by name">
                 </input>
             </div>
             <div id="TotalItems">
